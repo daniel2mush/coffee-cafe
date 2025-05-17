@@ -1,0 +1,21 @@
+@import "tailwindcss";
+
+
+
+@theme {
+    --color-brand-primary : #c49a6c;
+    --color-brand-secondary : #a97c50;
+    --color-brand-neutral : #bcbec0;
+    --color-brand-yellow : #f7941d;
+    --color-brand-background: #24190e
+}
+
+@layer utilities {
+  .img-shadow {
+    filter: drop-shadow(40px 50px 25px #0f1115); /* Corrected drop-shadow syntax */
+  }
+  .img-shadow2 {
+    filter: drop-shadow(10px 30px 15px #3030307a); /* Corrected drop-shadow syntax */
+  }
+}
+

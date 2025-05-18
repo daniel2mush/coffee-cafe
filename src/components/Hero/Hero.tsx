@@ -32,6 +32,24 @@ const Hero = () => {
       },
     },
   };
+  const itemsTopVariant: Variants = {
+    // Renamed for clarity, applies to individual items
+    hidden: {
+      opacity: 0,
+      y: -100, // Animating from bottom up
+    },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.5,
+        type: "spring",
+        stiffness: 100,
+        damping: 20,
+        // No delay here, as staggerChildren will handle the timing
+      },
+    },
+  };
 
   // Variants for the main container that orchestrates the stagger
   const mainContainerVariants: Variants = {
@@ -104,9 +122,15 @@ const Hero = () => {
               // OR define new variants specifically for this grid if its animation differs
             >
               {/* Text section - direct child of the grid motion.div */}
-              <Section1 itemVariants={itemVariants} />
+              <Section1
+                itemVariants={itemVariants}
+                itemTopVariant={itemsTopVariant}
+              />
               {/* Hero image section - direct child of the grid motion.div */}
-              <Section2 itemVariants={itemVariants} />
+              <Section2
+                itemVariants={itemVariants}
+                itemTopVariant={itemsTopVariant}
+              />
 
               {/* Third text section - direct child of the grid motion.div */}
               <Section3 itemVariants={itemVariants} />
@@ -177,15 +201,19 @@ export default Hero;
 
 interface itemVariantsTypes {
   itemVariants: Variants;
+  itemTopVariant?: Variants;
 }
 
-const Section1: React.FC<itemVariantsTypes> = ({ itemVariants }) => {
+const Section1: React.FC<itemVariantsTypes> = ({
+  itemVariants,
+  itemTopVariant,
+}) => {
   return (
     <motion.div
       variants={itemVariants} // Applies individual item animation
       className="text-brand-primary md:mt-0 p-4 space-y-28  h-full mb-16 md:mb-0">
       <motion.h1 // This will also animate based on itemVariants
-        variants={itemVariants}
+        variants={itemTopVariant}
         className="font-bold text-7xl leading-tight ml-14">
         Blvck Tumbler
       </motion.h1>
@@ -212,7 +240,10 @@ const Section1: React.FC<itemVariantsTypes> = ({ itemVariants }) => {
   );
 };
 
-const Section2: React.FC<itemVariantsTypes> = ({ itemVariants }) => {
+const Section2: React.FC<itemVariantsTypes> = ({
+  itemVariants,
+  itemTopVariant,
+}) => {
   return (
     <motion.div
       variants={itemVariants} // Applies individual item animation
@@ -227,7 +258,7 @@ const Section2: React.FC<itemVariantsTypes> = ({ itemVariants }) => {
         className="relative z-40 h-[400px] md:h-auto img-shadow cursor-grab active:cursor-grabbing "
       />
       <motion.div
-        variants={itemVariants}
+        variants={itemTopVariant}
         className="absolute h-[180px] w-[180px] rounded-full border-[20px] border-brand-yellow -top-20 right-1 z-10"
       />
       <motion.div

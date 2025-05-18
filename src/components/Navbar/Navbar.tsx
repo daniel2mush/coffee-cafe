@@ -1,6 +1,5 @@
 import { motion, type Variants } from "motion/react";
-import type { ReactNode } from "react";
-import { GiHamburger, GiHamburgerMenu } from "react-icons/gi";
+import { GiHamburgerMenu } from "react-icons/gi";
 
 const Navbar: React.FC<{
   setOpenSideBar: (value: boolean) => void;

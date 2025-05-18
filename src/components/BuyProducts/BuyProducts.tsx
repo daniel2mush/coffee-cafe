@@ -4,7 +4,7 @@ import { useEffect, useRef } from "react";
 
 const BuyProducts = () => {
   const ref = useRef(null);
-  const IsInView = useInView(ref, { once: true, amount: 0.5 });
+  const IsInView = useInView(ref, { once: true });
   const mainAnimation = useAnimation();
 
   useEffect(() => {

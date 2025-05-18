@@ -7,7 +7,7 @@ import Tracker from "./components/Tracker/Tracker";
 
 const App = () => {
   return (
-    <div className=" overflow-x-hidden scroll-smooth">
+    <div className="scroll-smooth">
       <Hero />
       <Tracker>
         {" "}

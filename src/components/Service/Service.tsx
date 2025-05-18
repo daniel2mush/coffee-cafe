@@ -31,7 +31,7 @@ const Coffee: CoffeeTypes[] = [
 
 const Service = () => {
   const ref = useRef(null);
-  const IsInView = useInView(ref, { once: true, amount: 0.5 });
+  const IsInView = useInView(ref, { once: true });
   const mainAnimation = useAnimation();
 
   const mainVariant: Variants = {

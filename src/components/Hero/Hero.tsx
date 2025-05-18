@@ -51,6 +51,23 @@ const Hero = () => {
     },
   };
 
+  const imageVariant: Variants = {
+    hidden: {
+      scale: 0,
+      // Animating from bottom up
+    },
+    visible: {
+      scale: 1,
+
+      transition: {
+        type: "spring",
+        stiffness: 100,
+        damping: 20,
+        // No delay here, as staggerChildren will handle the timing
+      },
+    },
+  };
+
   // Variants for the main container that orchestrates the stagger
   const mainContainerVariants: Variants = {
     hidden: { opacity: 0 },
@@ -130,6 +147,7 @@ const Hero = () => {
               <Section2
                 itemVariants={itemVariants}
                 itemTopVariant={itemsTopVariant}
+                imageVariant={imageVariant}
               />
 
               {/* Third text section - direct child of the grid motion.div */}
@@ -240,9 +258,13 @@ const Section1: React.FC<itemVariantsTypes> = ({
   );
 };
 
-const Section2: React.FC<itemVariantsTypes> = ({
+interface itemVar extends itemVariantsTypes {
+  imageVariant: Variants;
+}
+const Section2: React.FC<itemVar> = ({
   itemVariants,
   itemTopVariant,
+  imageVariant,
 }) => {
   return (
     <motion.div
@@ -252,7 +274,7 @@ const Section2: React.FC<itemVariantsTypes> = ({
         drag
         dragElastic={0.5}
         dragConstraints={{ bottom: 0, top: 0, right: 0, left: 0 }}
-        variants={itemVariants}
+        variants={imageVariant}
         src={getImageUrl("coffee.png")}
         alt="coffee"
         className="relative z-40 h-[400px] md:h-auto img-shadow cursor-grab active:cursor-grabbing "

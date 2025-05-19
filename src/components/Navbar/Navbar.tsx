@@ -38,7 +38,7 @@ const Navbar: React.FC<{
       variants={mainContainerVariants}
       initial="hidden"
       animate="visible"
-      className=" absolute text-white z-20 pt-10 w-full top-0 left-0 px-10 sm:px-20  ">
+      className=" absolute text-white z-20 pt-10 w-full top-0 left-0 pl-[10%] pr-[10%]  ">
       <motion.div
         variants={mainContainerVariants}
         initial="hidden"

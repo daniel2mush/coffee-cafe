@@ -4,6 +4,12 @@ import Navbar from "../Navbar/Navbar";
 import { AnimatePresence, motion, type Variants } from "framer-motion";
 import { useState } from "react";
 
+const springTransition = {
+  type: "spring",
+  stiffness: 100,
+  damping: 20,
+};
+
 const Hero = () => {
   const [openSideBar, setOpenSideBar] = useState(false);
 
@@ -19,26 +25,16 @@ const Hero = () => {
     visible: {
       opacity: 1,
       y: 0,
-      transition: {
-        duration: 0.5,
-        type: "spring",
-        stiffness: 100,
-        damping: 20,
-      },
+      transition: { duration: 0.5, ...springTransition },
     },
   };
 
-  const itemsTopVariant: Variants = {
+  const itemTopVariants: Variants = {
     hidden: { opacity: 0, y: -100 },
     visible: {
       opacity: 1,
       y: 0,
-      transition: {
-        duration: 0.5,
-        type: "spring",
-        stiffness: 100,
-        damping: 20,
-      },
+      transition: { duration: 0.5, ...springTransition },
     },
   };
 
@@ -46,7 +42,7 @@ const Hero = () => {
     hidden: { scale: 0 },
     visible: {
       scale: 1,
-      transition: { type: "spring", stiffness: 100, damping: 20 },
+      transition: { ...springTransition },
     },
   };
 
@@ -63,12 +59,7 @@ const Hero = () => {
     visible: {
       x: 0,
       opacity: 1,
-      transition: {
-        duration: 0.5,
-        type: "spring",
-        stiffness: 100,
-        damping: 20,
-      },
+      transition: { duration: 0.5, ...springTransition },
     },
   };
 
@@ -84,28 +75,26 @@ const Hero = () => {
       variants={mainContainerVariants}
       exit={{ x: "-100%" }}
       style={bg}
-      className=" overflow-clip w-full ">
+      className="pl-[10%] pr-[10%] min-h-screen place-content-center overflow-y-auto">
       <Navbar setOpenSideBar={setOpenSideBar} openSideBar={openSideBar} />
-      <motion.section className="  pt-40">
-        <motion.div className="px-5 ">
+      <motion.section className="pt-40">
+        <motion.div className="px-5">
           <motion.div
-            className="  grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 place-items-center w-full"
-            initial="hidden"
-            animate="visible"
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 place-items-center w-full"
             variants={mainContainerVariants}>
             <Section1
               itemVariants={itemVariants}
-              itemTopVariant={itemsTopVariant}
+              itemTopVariant={itemTopVariants}
             />
             <Section2
               itemVariants={itemVariants}
-              itemTopVariant={itemsTopVariant}
+              itemTopVariant={itemTopVariants}
               imageVariant={imageVariant}
             />
             <Section3 itemVariants={itemVariants} />
           </motion.div>
         </motion.div>
-        <SideBar
+        <Sidebar
           NavContainerVariants={NavContainerVariants}
           openSideBar={openSideBar}
           navVariants={navVariants}
@@ -128,7 +117,7 @@ const Section1: React.FC<itemVariantsTypes> = ({
 }) => (
   <motion.div
     variants={itemVariants}
-    className="text-brand-primary md:mt-0 p-4 space-y-28 h-full mb-16 md:mb-0 md:place-content-end  ">
+    className="text-brand-primary md:mt-0 p-4 space-y-28 h-full mb-16 md:mb-0 md:place-content-end">
     <motion.h1
       variants={itemTopVariant}
       className="font-bold text-7xl xl:text-8xl leading-tight ml-14">
@@ -141,7 +130,7 @@ const Section1: React.FC<itemVariantsTypes> = ({
         </motion.h1>
         <motion.h1
           variants={itemVariants}
-          className="line-clamp-3 text-sm xl:text-xl opacity-55 leading-loose ">
+          className="line-clamp-3 text-sm xl:text-xl opacity-55 leading-loose">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti,
           repellendus. Vero maxime eos harum quod animi, voluptates asperiores
           voluptate dolorum amet debitis nihil.
@@ -164,11 +153,11 @@ const Section2: React.FC<itemVar> = ({
   itemTopVariant,
   imageVariant,
 }) => (
-  <motion.div variants={itemVariants} className="relative h-full   ">
+  <motion.div variants={itemVariants} className="relative h-full">
     <motion.img
       variants={imageVariant}
       src={getImageUrl("coffee.png")}
-      alt="coffee"
+      alt="Black tumbler coffee cup"
       className="relative z-40 h-[400px] md:h-auto img-shadow"
     />
     <motion.div
@@ -190,13 +179,13 @@ const Section2: React.FC<itemVar> = ({
 const Section3: React.FC<itemVariantsTypes> = ({ itemVariants }) => (
   <motion.div
     variants={itemVariants}
-    className="text-brand-primary md:mt-0 p-4 space-y-28 lg:pt-60 hidden lg:block place-content-end  h-full">
+    className="text-brand-primary md:mt-0 p-4 space-y-28 lg:pt-60 hidden lg:block place-content-end h-full">
     <motion.div variants={itemVariants} className="relative">
       <motion.div variants={itemVariants} className="relative z-10 space-y-4">
-        <motion.h1 variants={itemVariants} className=" opacity- text-2xl">
+        <motion.h1 variants={itemVariants} className="text-2xl">
           Blvck Tumbler
         </motion.h1>
-        <h1 className="ine-clamp-3 text-sm xl:text-xl opacity-55 leading-loose">
+        <h1 className="line-clamp-3 text-sm xl:text-xl opacity-55 leading-loose">
           Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero maxime
           eos harum quod animi, voluptates asperiores voluptate dolorum amet
           debitis nihil.
@@ -207,7 +196,7 @@ const Section3: React.FC<itemVariantsTypes> = ({ itemVariants }) => (
   </motion.div>
 );
 
-const SideBar = ({
+const Sidebar = ({
   openSideBar,
   NavContainerVariants,
   navVariants,
@@ -215,49 +204,47 @@ const SideBar = ({
   openSideBar: boolean;
   NavContainerVariants: Variants;
   navVariants: Variants;
-}) => {
-  return (
-    <AnimatePresence>
-      {openSideBar && (
+}) => (
+  <AnimatePresence>
+    {openSideBar && (
+      <motion.div
+        key="sidebar"
+        initial={{ x: 140, opacity: 0 }}
+        animate={{ x: 0, opacity: 1 }}
+        exit={{ x: 140, opacity: 1 }}
+        transition={{ type: "spring", stiffness: 200, damping: 30 }}
+        className="absolute z-10 top-0 right-0 w-[140px] h-screen bg-gradient-to-b from-brand-primary to-brand-yellow">
         <motion.div
-          key="sidebar"
-          initial={{ x: 140, opacity: 0 }}
-          animate={{ x: 0, opacity: 1 }}
-          exit={{ x: 140, opacity: 1 }}
-          transition={{ type: "spring", stiffness: 200, damping: 30 }}
-          className="fixed z-10 top-0 right-0 w-[140px] h-screen bg-gradient-to-b from-brand-primary to-brand-yellow">
+          initial="hidden"
+          animate="visible"
+          variants={NavContainerVariants}
+          exit={{ x: "100%" }}
+          className="w-full h-full flex flex-col justify-center items-center gap-6 text-white">
           <motion.div
-            initial="hidden"
-            animate="visible"
-            variants={NavContainerVariants}
-            exit={{ x: "100%" }}
-            className="w-full h-full flex flex-col justify-center items-center gap-6 text-white">
-            <motion.div
-              variants={navVariants}
-              className="w-[1px] h-[70px] bg-white"
-            />
-            <motion.div
-              variants={navVariants}
-              className="p-2 rounded-full border-2 text-2xl cursor-pointer">
-              <FaFacebookF />
-            </motion.div>
-            <motion.div
-              variants={navVariants}
-              className="p-2 rounded-full border-2 text-2xl cursor-pointer">
-              <FaInstagram />
-            </motion.div>
-            <motion.div
-              variants={navVariants}
-              className="p-2 rounded-full border-2 text-2xl cursor-pointer">
-              <FaTwitter />
-            </motion.div>
-            <motion.div
-              variants={navVariants}
-              className="w-[1px] h-[70px] bg-white"
-            />
+            variants={navVariants}
+            className="w-[1px] h-[70px] bg-white"
+          />
+          <motion.div
+            variants={navVariants}
+            className="p-2 rounded-full border-2 text-2xl cursor-pointer">
+            <FaFacebookF />
           </motion.div>
+          <motion.div
+            variants={navVariants}
+            className="p-2 rounded-full border-2 text-2xl cursor-pointer">
+            <FaInstagram />
+          </motion.div>
+          <motion.div
+            variants={navVariants}
+            className="p-2 rounded-full border-2 text-2xl cursor-pointer">
+            <FaTwitter />
+          </motion.div>
+          <motion.div
+            variants={navVariants}
+            className="w-[1px] h-[70px] bg-white"
+          />
         </motion.div>
-      )}
-    </AnimatePresence>
-  );
-};
+      </motion.div>
+    )}
+  </AnimatePresence>
+);

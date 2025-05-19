@@ -84,12 +84,12 @@ const Hero = () => {
       variants={mainContainerVariants}
       exit={{ x: "-100%" }}
       style={bg}
-      className=" w-full overflow-y-auto">
+      className=" overflow-clip w-full ">
       <Navbar setOpenSideBar={setOpenSideBar} openSideBar={openSideBar} />
-      <motion.section className="min-h-screen pt-40">
-        <motion.div className="px-5">
+      <motion.section className="  pt-40">
+        <motion.div className="px-5 ">
           <motion.div
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 place-items-center w-full"
+            className="  grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 place-items-center w-full"
             initial="hidden"
             animate="visible"
             variants={mainContainerVariants}>
@@ -128,10 +128,10 @@ const Section1: React.FC<itemVariantsTypes> = ({
 }) => (
   <motion.div
     variants={itemVariants}
-    className="text-brand-primary md:mt-0 p-4 space-y-28 h-full mb-16 md:mb-0  ">
+    className="text-brand-primary md:mt-0 p-4 space-y-28 h-full mb-16 md:mb-0 md:place-content-end  ">
     <motion.h1
       variants={itemTopVariant}
-      className="font-bold text-7xl leading-tight ml-14">
+      className="font-bold text-7xl xl:text-8xl leading-tight ml-14">
       Blvck Tumbler
     </motion.h1>
     <motion.div variants={itemVariants} className="relative">
@@ -141,7 +141,7 @@ const Section1: React.FC<itemVariantsTypes> = ({
         </motion.h1>
         <motion.h1
           variants={itemVariants}
-          className="line-clamp-3 text-sm opacity-55 leading-loose">
+          className="line-clamp-3 text-sm xl:text-xl opacity-55 leading-loose ">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti,
           repellendus. Vero maxime eos harum quod animi, voluptates asperiores
           voluptate dolorum amet debitis nihil.
@@ -164,7 +164,7 @@ const Section2: React.FC<itemVar> = ({
   itemTopVariant,
   imageVariant,
 }) => (
-  <motion.div variants={itemVariants} className="relative">
+  <motion.div variants={itemVariants} className="relative h-full   ">
     <motion.img
       variants={imageVariant}
       src={getImageUrl("coffee.png")}
@@ -190,13 +190,13 @@ const Section2: React.FC<itemVar> = ({
 const Section3: React.FC<itemVariantsTypes> = ({ itemVariants }) => (
   <motion.div
     variants={itemVariants}
-    className="text-brand-primary md:mt-0 p-4 space-y-28 lg:pt-60 hidden lg:block">
+    className="text-brand-primary md:mt-0 p-4 space-y-28 lg:pt-60 hidden lg:block place-content-end  h-full">
     <motion.div variants={itemVariants} className="relative">
       <motion.div variants={itemVariants} className="relative z-10 space-y-4">
-        <motion.h1 variants={itemVariants} className="text-2xl">
+        <motion.h1 variants={itemVariants} className=" opacity- text-2xl">
           Blvck Tumbler
         </motion.h1>
-        <h1 className="line-clamp-3 text-sm opacity-55 leading-loose">
+        <h1 className="ine-clamp-3 text-sm xl:text-xl opacity-55 leading-loose">
           Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero maxime
           eos harum quod animi, voluptates asperiores voluptate dolorum amet
           debitis nihil.

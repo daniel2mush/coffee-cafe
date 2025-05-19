@@ -57,7 +57,7 @@ const Download = () => {
         <motion.div
           initial="hidden"
           whileInView={"visible"}
-          viewport={{ once: true, amount: 0.5 }}
+          viewport={{ once: true, amount: 0.2 }}
           variants={MainContainerVariants}
           className=" md:w-lg sm:w-sm  px-10 md:px-0 space-y-3 ">
           <motion.h1

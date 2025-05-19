@@ -31,7 +31,7 @@ const Coffee: CoffeeTypes[] = [
 
 const Service = () => {
   const ref = useRef(null);
-  const IsInView = useInView(ref, { once: true });
+  const IsInView = useInView(ref, { once: true, amount: 0.2 });
   const mainAnimation = useAnimation();
 
   const mainVariant: Variants = {
@@ -77,7 +77,7 @@ const Service = () => {
         variants={mainVariant}
         initial="hidden"
         animate={mainAnimation}
-        className=" w-full place-items-center ">
+        className=" w-full flex items-center justify-center flex-col ">
         <motion.h1
           variants={itemVariants}
           className=" text-3xl font-bold text-brand-background max-w-lg text-center">
@@ -95,7 +95,7 @@ const Service = () => {
         {Coffee.map((item) => (
           <motion.div
             variants={itemVariants}
-            className=" place-items-center px-20  md:px-10 space-y-2 mb-5 ">
+            className=" flex items-center justify-center flex-col px-20  md:px-10 space-y-2 mb-5 ">
             <motion.img
               whileHover={{ scale: 1.1 }}
               transition={{
@@ -104,7 +104,7 @@ const Service = () => {
               }}
               src={item.image}
               alt={item.name}
-              className=" max-h-[200px] object-cover img-shadow2 h-full"
+              className=" h-[200px] object-cover img-shadow2 xl:h-[300px]"
             />
             <h1 className=" z-20 text-2xl text-brand-yellow text-center font-bold mt-10">
               {item.name}

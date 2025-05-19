@@ -4,7 +4,7 @@ import { useEffect, useRef } from "react";
 
 const BuyProducts = () => {
   const ref = useRef(null);
-  const IsInView = useInView(ref, { once: true });
+  const IsInView = useInView(ref, { once: true, amount: 0.2 });
   const mainAnimation = useAnimation();
 
   useEffect(() => {
@@ -56,7 +56,7 @@ const BuyProducts = () => {
   };
 
   return (
-    <motion.section className="bg-brand-yellow/10 place-content-center md:px-20 px-10">
+    <motion.section className="bg-brand-yellow/10 place-content-center mt-10 md:px-20 px-10">
       <motion.div
         ref={ref}
         variants={mainContainerVariants} // ✅ Correct
@@ -120,7 +120,7 @@ const BuyProducts = () => {
             variants={imageVariant}
             src={getImageUrl("worldMap.png")}
             alt=""
-            className="h-[40vh] sm:h-[80vh] object-cover w-full"
+            className=" object-cover opacity-30 md:h-[700px] w-full"
           />
         </motion.div>
       </motion.div>

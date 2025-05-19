@@ -72,7 +72,7 @@ const Service = () => {
       variants={mainVariant}
       initial="hidden"
       animate={mainAnimation}
-      className=" pt-10 ">
+      className=" pt-10 pl-[10%] pr-[10%] ">
       <motion.div
         variants={mainVariant}
         initial="hidden"

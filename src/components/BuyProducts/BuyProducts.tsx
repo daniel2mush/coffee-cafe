@@ -56,13 +56,13 @@ const BuyProducts = () => {
   };
 
   return (
-    <motion.section className="bg-brand-yellow/10 place-content-center mt-10 md:px-20 px-10">
+    <motion.section className="pl-[10%] pr-[10%] bg-brand-yellow/10 place-content-center mt-10 md:px-20 px-10">
       <motion.div
         ref={ref}
         variants={mainContainerVariants} // ✅ Correct
         initial="hidden"
         animate={mainAnimation} // ✅ Controlled by viewport
-        className="grid grid-cols-1 lg:grid-cols-3 w-full pt-10 lg:pt-0">
+        className="grid grid-cols-1 lg:grid-cols-3 w-full pl-[10%] pr-[10%]">
         <motion.div
           variants={mainContainerVariants}
           className="h-full place-content-center space-y-6 px-10 pt-10 sm:pt-0">

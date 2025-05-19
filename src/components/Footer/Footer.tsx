@@ -10,7 +10,7 @@ import { getImageUrl } from "../../utils/GetImage";
 
 const Footer = () => {
   return (
-    <footer className="h-auto bg-brand-yellow px-5 sm:px-10 md:px-20">
+    <footer className="h-auto bg-brand-yellow pl-[10%] pr-[10%]">
       <div className="grid grid-cols-1 md:grid-cols-3 py-10 text-white border-b-2 gap-14">
         <div className="space-y-4">
           <h1 className="uppercase font-bold text-2xl">Zcoder Caffee</h1>

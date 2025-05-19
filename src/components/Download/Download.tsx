@@ -50,10 +50,10 @@ const Download = () => {
   };
 
   return (
-    <section className="   md:px-20 px-10 py-10  ">
+    <section className="   pl-[10%] pr-[10%] py-10  ">
       <div
         style={bg}
-        className=" sm:flex sm:justify-end sm:items-center min-h-[400px] rounded-3xl place-content-center">
+        className=" sm:flex sm:justify-end sm:items-center min-h-[400px] rounded-3xl place-content-center  pl-[10%] pr-[10%]">
         <motion.div
           initial="hidden"
           whileInView={"visible"}
